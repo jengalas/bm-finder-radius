@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+
+  <head>    
+    <link rel="stylesheet" href="style.css">
+    <meta charset="utf-8">
+  </head>
+
+  <body>
+    <div class="container">
+      <h1>BM finder by radius</h1>
+      <div id="statusDiv"></div>
+      <form id="bmRequestForm">
+        <input type="text" id="lat"  placeholder="Latitude" value="">
+        <input type="text" id="lon"  placeholder="Longitude" value="">
+        <input type="text" id="radius"  placeholder="Radius" value="">
+        <input type="button" value="Submit" onclick="handlers.getInputValues()" />
+        <!-- <button type="submit" onclick="getInputValue()">Add waypoint</button> -->
+        <div id="alert" style="color: red"></div>
+      </form>
+
+      <div id="waypointsDiv">
+        <!--<button onclick="handlers.toggleAll()" style="margin: 1em 0;">Toggle all</button>-->
+        <table></table>
+      </div>
+      
+      <div id="results"></div>
+      
+      <div id="map"></div>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+
+</html>

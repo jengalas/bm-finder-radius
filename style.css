@@ -1,0 +1,98 @@
+body {
+    background: #e8f6d8;
+    font-family: Arial, sans-serif;
+    font-size: 16px;
+  }
+  
+  h1 {
+    font-family: Arial, sans-serif;
+  }
+  
+  .container {
+    background: #ffffff;
+    min-height: calc(100vh - 100px);
+    margin: 0 auto;
+    padding: 2em;
+    width: 70%;
+  }
+  
+  input {
+    font-size: 20px;
+    height: 32px;
+  }
+  
+  input[type=button] {
+    height: 38px;
+  }
+  
+  pre {
+    margin: 0;
+  }
+  
+  .deleteButton {
+    color: red;
+    font-weight: bold;
+    margin-left: 1em;
+  }
+  
+  table {
+    border-collapse: collapse;
+    margin-bottom: 3em;
+  }
+  
+  th {
+    border-bottom: 2px solid black;
+    text-align: left;
+  }
+  
+  .nameData,
+  .latData,
+  .longData,
+  .descData,
+  .cmtData {
+    border-left: 1px solid black;
+    padding: 4px 6px;
+  }
+  
+  #toggleAllButton {
+    background-color: #fff;
+    border: 1px solid #999;
+    font-size: 1.5em;
+    margin-bottom: 1em;
+    padding: 0 4px;
+  }
+  
+  #toggleAllButton:hover {
+    background-color: #bbb;
+    color: #fff;
+  }
+  
+  #map {
+    margin-top: 2em;
+  }
+  
+  td {
+    padding: 4px 6px;
+  }
+  
+  #waypointsDiv {
+    margin: 1em 0;
+  }
+  
+  iframe {
+    height: 600px;
+    width: 100%;
+  }
+  
+  .mapped {
+    background-color: gray;
+  }
+  
+  .scaled {
+    color: red;
+  }
+  
+  .alert {
+    color: red;
+    font-size: 20px;
+  }
