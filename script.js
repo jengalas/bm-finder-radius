@@ -143,7 +143,8 @@ var view = {
 
         L.control.mapCenterCoord({
             latlngFormat: 'DD',
-            latlngDesignators: false
+            latlngDesignators: false,
+            template: '{y}, {x}',
             }).addTo(map);
 
       },
