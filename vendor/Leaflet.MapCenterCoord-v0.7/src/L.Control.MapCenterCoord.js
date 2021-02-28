@@ -106,11 +106,20 @@ L.Control.MapCenterCoord = L.Control.extend({
     // format
     if (this.options.latlngFormat === 'DM') {
       deg = parseInt(center.lng);
-      console.log(deg);
-      console.log(center.lng);
-      lng = deg + 'º ' + this._format('00.000', (center.lng - deg) * 60) + "'";
+      if (center.lng_neg) {
+        lng = deg + 'º ' + this._format('00.000', (deg - center.lng) * 60) + "'";
+      }
+      else {
+        lng = deg + 'º ' + this._format('00.000', (center.lng - deg) * 60) + "'";
+      }
       deg = parseInt(center.lat);
-      lat = deg + 'º ' + this._format('00.000', (center.lat - deg) * 60) + "'";
+      if (center.lat_neg) {
+        lat = deg + 'º ' + this._format('00.000', (deg - center.lat) * 60) + "'";
+      }
+      else {
+        lat = deg + 'º ' + this._format('00.000', (center.lat - deg) * 60) + "'";
+      }
+      
     } else if (this.options.latlngFormat === 'DMS') {
       deg = parseInt(center.lng);
       min = (center.lng - deg) * 60;
