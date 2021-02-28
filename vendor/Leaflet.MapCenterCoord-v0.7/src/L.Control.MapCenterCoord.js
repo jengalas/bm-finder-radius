@@ -122,7 +122,13 @@ L.Control.MapCenterCoord = L.Control.extend({
       
     } else if (this.options.latlngFormat === 'DMS') {
       deg = parseInt(center.lng);
-      min = (center.lng - deg) * 60;
+      if (center.lng_neg) {
+        min = (deg - center.lng) * 60;
+      }
+      else {
+        min = (center.lng - deg) * 60;
+      }
+      
       lng = deg + 'º ' + this._format('00', parseInt(min)) + "' " + this._format('00.0', (min - parseInt(min)) * 60) + "''";
       deg = parseInt(center.lat);
       min = (center.lat - deg) * 60;

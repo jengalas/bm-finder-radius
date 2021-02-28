@@ -142,7 +142,7 @@ var view = {
 		map.addLayer(markers);
 
         L.control.mapCenterCoord({
-            latlngFormat: 'DM',
+            latlngFormat: 'DD',
             latlngDesignators: false,
             template: '{y}, {x}',
             }).addTo(map);
