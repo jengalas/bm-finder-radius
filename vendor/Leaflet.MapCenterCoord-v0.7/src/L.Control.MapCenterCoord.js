@@ -106,6 +106,8 @@ L.Control.MapCenterCoord = L.Control.extend({
     // format
     if (this.options.latlngFormat === 'DM') {
       deg = parseInt(center.lng);
+      console.log(deg);
+      console.log(center.lng);
       lng = deg + 'º ' + this._format('00.000', (center.lng - deg) * 60) + "'";
       deg = parseInt(center.lat);
       lat = deg + 'º ' + this._format('00.000', (center.lat - deg) * 60) + "'";
