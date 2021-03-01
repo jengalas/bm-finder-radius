@@ -3,6 +3,12 @@ var handlers = {
       let lat = document.getElementById("lat").value;
       let lon = document.getElementById("lon").value;
       let radius = document.getElementById("radius").value;
+      if (radius <= 0) {
+        document.getElementById("statusDiv");
+        statusDiv.innerHTML = '<p class="alert">Please enter a radius greater than zero.</p>';
+        radius.value = "";
+        return false;
+      }
       handlers.addWaypoint(lat,lon,radius);
     },
     addWaypoint: function(lat,lon,radius) {
@@ -14,7 +20,16 @@ var handlers = {
         .then(json => {
             if (json.length == 0) {
                 document.getElementById("statusDiv");
+                statusDiv.innerHTML = '';
                 statusDiv.innerHTML = '<p class="alert">There are no marks within ' + radius + ' miles of that location.</p>';
+                document.getElementById("map").innerHTML = '';
+                return false;
+            }
+            else if (json.length === undefined) {
+                document.getElementById("statusDiv");
+                statusDiv.innerHTML = '<p class="alert">Bounds not valid; please enter a position within the United States.</p>';
+                document.getElementById("map").innerHTML = '';
+                return false;
             }
             else {
                 document.getElementById("statusDiv");
