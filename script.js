@@ -92,12 +92,9 @@ var view = {
         }
     },
     displayMap: function(myGeoJSON,lat,lon) { 
-  
         this.refreshMap();
-
         var map = L.map('map');
-        
-        // L.circle([lat,lon], 9656).addTo(map);
+        // L.circle([lat,lon], 9656).addTo(map); If desired to show the radius graphically
 
         var geojsonMarkerOptions = {
             radius: 8,
@@ -112,8 +109,25 @@ var view = {
             pointToLayer: function (feature, latlng) {
                 return L.circleMarker(latlng, geojsonMarkerOptions);
             },
-            onEachFeature: function(feature, layer) {               
-                layer.bindPopup("<b>Name: </b>" + feature.properties.name + '<br>' + "<b>PID: </b> <a target='_blank' href='https://www.ngs.noaa.gov/cgi-bin/ds_mark.prl?PidBox=" + feature.properties.pid + "'>" + feature.properties.pid + "</a><br>" + "<b>Monument Type: </b>" + feature.properties.monumentType + "<br>" + "<b>Setting: </b>" + feature.properties.setting + "<br>" + "<b>Coordinates: </b>" + Number(feature.geometry.coordinates[1]).toFixed(6) + ', ' + Number(feature.geometry.coordinates[0]).toFixed(6) + "<br>" + "<b>Condition: </b>" + feature.properties.condition);
+            onEachFeature: function(feature, layer) { 
+                
+                var popupText = '<b>Name: </b>' + feature.properties.name + '<br>' + '<b>PID: </b> <a target="_blank" href="https://www.ngs.noaa.gov/cgi-bin/ds_mark.prl?PidBox=' + feature.properties.pid + '">' + feature.properties.pid + '</a>';
+
+                if (feature.properties.monumentType) {
+                    popupText += '<br><b>Monument Type: </b>' + feature.properties.monumentType;
+                }
+
+                if (feature.properties.setting) {
+                    popupText += '<br><b>Setting: </b>' + feature.properties.setting;
+                }
+
+                popupText += '<br><b>Coordinates: </b>' + Number(feature.geometry.coordinates[1]).toFixed(6) + ', ' + Number(feature.geometry.coordinates[0]).toFixed(6);
+
+                if (feature.properties.condition) {
+                    popupText += '<br><b>Condition: </b>' + feature.properties.condition;
+                }
+
+                layer.bindPopup(popupText);
             } 
         });
 
