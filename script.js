@@ -68,7 +68,7 @@ var handlers = {
             }
             bmRequestForm.reset();
             // waypointsDiv.innerHTML = JSON.stringify(myGeoJSON);
-            view.displayMap(myGeoJSON,lat,lon);
+            view.displayMap(myGeoJSON,lat,lon,radius);
             return myGeoJSON;
         })
         .catch(e => {
@@ -90,10 +90,11 @@ var view = {
            $(".container").append('<div id="map"></div>'); 
         }
     },
-    displayMap: function(myGeoJSON,lat,lon) { 
+    displayMap: function(myGeoJSON,lat,lon,radius) { 
         this.refreshMap();
         var map = L.map('map');
-        // L.circle([lat,lon], 9656).addTo(map); If desired to show the radius graphically
+        
+        var circ = L.circle([lat,lon], {fillColor: 'transparent', radius: radius*1609.344}).addTo(map); // If desired to show the radius graphically
 
         var geojsonMarkerOptions = {
             radius: 8,
@@ -161,6 +162,7 @@ var view = {
             }).addTo(map);
 
         map.fitBounds(allPoints.getBounds());
+        map.fitBounds(circ.getBounds());
 
         var markers = L.markerClusterGroup({
             disableClusteringAtZoom: 17
