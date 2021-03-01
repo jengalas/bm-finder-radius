@@ -14,7 +14,7 @@ var handlers = {
     addWaypoint: function(lat,lon,radius) {
         var proxyUrl = 'https://mysterious-stream-86355.herokuapp.com/',
         targetUrl = 'https://geodesy.noaa.gov/api/nde/radial?lat=' + lat + '&lon=' + lon + '&radius=' + radius;
-        console.log(targetUrl);
+        
         fetch(proxyUrl + targetUrl)
         .then(response => response.json())
         .then(json => {
@@ -43,7 +43,7 @@ var handlers = {
             };   
             
             for (let i = 0; i < json.length; i++) { 
-                console.log('i=' ,i);                
+                               
                 myGeoJSON.features.push({
                     "type":"Feature",
                     "geometry":{
@@ -58,7 +58,7 @@ var handlers = {
                         "condition":null                        
                     }
                 });       
-                console.log(myGeoJSON.features[i]);          
+                         
                 myGeoJSON.features[i].geometry.coordinates.push(Number(json[i].lon),Number(json[i].lat));
                 myGeoJSON.features[i].properties.pid = json[i].pid;
                 myGeoJSON.features[i].properties.name = json[i].name;  
@@ -72,7 +72,6 @@ var handlers = {
             return myGeoJSON;
         })
         .catch(e => {
-            console.log(e);
             document.getElementById("bmRequestForm");
             bmRequestForm.reset();
             return '<h1>Error Loading</h1>';
