@@ -1,4 +1,19 @@
 var handlers = {
+    getCurrentLocation: function (pos) {
+        let lat = pos.coords.latitude;
+        document.getElementById("lat").value = lat;
+        let lon = pos.coords.longitude;
+        document.getElementById("lon").value = lon;
+        let radius = document.getElementById("radius").value;
+        if (radius <= 0) {
+          document.getElementById("statusDiv");
+          statusDiv.innerHTML = '<p class="alert">Please enter a radius greater than zero.</p>';
+          radius.value = "";
+          return false;
+        }
+        // let radius = 5;
+        handlers.addWaypoint(lat,lon,radius);
+      },
     getInputValues: function () {
       let lat = document.getElementById("lat").value;
       let lon = document.getElementById("lon").value;

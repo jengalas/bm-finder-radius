@@ -42,6 +42,21 @@
       <div id="map"></div>
     </div>
 
+    <script>
+
+      // Below is for keypress - can also add another button for getting current location - might be better.
+      document.addEventListener('keydown', logKey);
+      function logKey(e) {
+        if (e.code == "KeyL") {
+          window.navigator.geolocation
+            .getCurrentPosition(handlers.getCurrentLocation, console.log);
+          // handlers.getCurrentLocation();
+          // https://www.udemy.com/course/display-and-analyze-gis-data-on-the-web/learn/lecture/7280474#overview
+          // https://dev.to/codebubb/how-to-get-a-user-s-location-with-javascript-362o
+        }
+      }
+            
+    </script>
     <script src="script.js"></script>
   </body>
 
