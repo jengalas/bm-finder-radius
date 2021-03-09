@@ -4,10 +4,11 @@ var handlers = {
         document.getElementById("lat").value = lat;
         let lon = pos.coords.longitude;
         document.getElementById("lon").value = lon;
+        document.getElementById("radius").focus();
         let radius = document.getElementById("radius").value;
         if (radius <= 0) {
           document.getElementById("statusDiv");
-          statusDiv.innerHTML = '<p class="alert">Please enter a radius greater than zero.</p>';
+          statusDiv.innerHTML = '<p class="alert">Please enter a radius in miles, greater than zero.</p>';
           radius.value = "";
           return false;
         }

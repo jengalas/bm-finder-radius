@@ -24,6 +24,7 @@
       <h1>BM finder by radius</h1>
       <div id="statusDiv"></div>
       <form id="bmRequestForm">
+        <input id="btnGetCurrentPosition" type='button' value="Use Current Location">
         <input type="text" id="lat"  placeholder="Latitude" value="">
         <input type="text" id="lon"  placeholder="Longitude" value="">
         <input type="text" id="radius"  placeholder="Radius (miles)" value="">
@@ -45,17 +46,25 @@
     <script>
 
       // Below is for keypress - can also add another button for getting current location - might be better.
-      document.addEventListener('keydown', logKey);
-      function logKey(e) {
-        if (e.code == "KeyL") {
+      // document.addEventListener('keydown', logKey);
+      // function logKey(e) {
+      //   if (e.code == "KeyL") {
+      //     window.navigator.geolocation
+      //       .getCurrentPosition(handlers.getCurrentLocation, console.log);
+      //     // handlers.getCurrentLocation();
+      //     // https://www.udemy.com/course/display-and-analyze-gis-data-on-the-web/learn/lecture/7280474#overview
+      //     // https://dev.to/codebubb/how-to-get-a-user-s-location-with-javascript-362o
+      //   }
+      // }
+
+      var btn = document.getElementById("btnGetCurrentPosition");
+      btn.addEventListener('click', getCurrentPosition);
+      function getCurrentPosition(e) {        
           window.navigator.geolocation
             .getCurrentPosition(handlers.getCurrentLocation, console.log);
-          // handlers.getCurrentLocation();
-          // https://www.udemy.com/course/display-and-analyze-gis-data-on-the-web/learn/lecture/7280474#overview
-          // https://dev.to/codebubb/how-to-get-a-user-s-location-with-javascript-362o
-        }
       }
-            
+  
+                 
     </script>
     <script src="script.js"></script>
   </body>
