@@ -6,6 +6,8 @@ var handlers = {
         document.getElementById("lon").value = lon;
         document.getElementById("radius").focus();
         let radius = document.getElementById("radius").value;
+        radius = Number(radius);
+        alert(typeof(radius));
         if (radius <= 0) {
           document.getElementById("statusDiv");
           statusDiv.innerHTML = '<p class="alert">Please enter a radius in miles, greater than zero.</p>';
