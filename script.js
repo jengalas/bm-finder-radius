@@ -113,6 +113,10 @@ var view = {
         
         var circ = L.circle([lat,lon], {fillColor: 'transparent', radius: radius*1609.344}).addTo(map); // If desired to show the radius graphically
 
+        var mrkCurrentLocation = new L.marker([lat,lon])
+            .bindPopup(lat + ', ' + lon)
+            .addTo(map);
+
         var geojsonMarkerOptions = {
             radius: 8,
             fillColor: "#ff7800",
