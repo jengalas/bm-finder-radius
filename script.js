@@ -198,6 +198,8 @@ var view = {
             template: '{y}, {x}',
             }).addTo(map);
 
+        map.addControl(new L.Control.Fullscreen());
+
       },
 }
 
