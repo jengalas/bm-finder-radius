@@ -33,3 +33,30 @@ body {
   .leaflet-container .leaflet-control-mapcentercoord {
       font-size: 18px !important;
   }
+  
+  @media only screen and (max-width: 768px) {
+    .container {
+      margin: 0;
+      padding: 0;
+      padding-top: 1em;
+      width: 100%;
+    }
+    h1 {
+      text-align: center;
+    }
+    input {
+      display: block;
+      margin: 0 auto;
+      margin-bottom: .5em;
+      padding: 0;
+      padding-left: 4px;
+      width: 90%;
+    }
+    #statusDiv {
+      text-align: center;
+    }
+    #map {
+      height: 400px;
+    }
+
+  }
