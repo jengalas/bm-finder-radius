@@ -40,6 +40,7 @@ var handlers = {
                 statusDiv.innerHTML = '';
                 statusDiv.innerHTML = '<p class="alert">There are no marks within ' + radius + ' miles of that location.</p>';
                 document.getElementById("map").innerHTML = '';
+                document.getElementById("map").style.height = "0";
                 return false;
             }
             else if (json.length === undefined) {
