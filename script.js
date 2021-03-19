@@ -199,7 +199,13 @@ var view = {
             template: '{y}, {x}',
             }).addTo(map);
 
-        map.addControl(new L.Control.Fullscreen());
+        map.on('contextmenu', addMarker);
+
+        function addMarker(e){
+            var newMarker = new L.marker(e.latlng).addTo(map);
+            newMarker.bindPopup(e.latlng.lat.toFixed(6).toString() + ', ' + e.latlng.lng.toFixed(6).toString()).openPopup();
+            handlers.addWaypoint(e.latlng.lat,e.latlng.lng,5);
+        }
 
       },
 }
