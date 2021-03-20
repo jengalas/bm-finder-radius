@@ -115,7 +115,7 @@ var view = {
         var circ = L.circle([lat,lon], {fillColor: 'transparent', radius: radius*1609.344}).addTo(map); // If desired to show the radius graphically
 
         var mrkCurrentLocation = new L.marker([lat,lon])
-            .bindPopup(lat + ', ' + lon)
+            .bindPopup(lat + ', ' + lon)  //FIXME: truncate to max of 6 decimal places
             .addTo(map);
 
         var geojsonMarkerOptions = {
@@ -201,12 +201,13 @@ var view = {
 
         map.on('contextmenu', addMarker);
 
+// TODO: add form for "Radius?" and "Use this location?" in popup
+
         function addMarker(e){
             var newMarker = new L.marker(e.latlng).addTo(map);
             newMarker.bindPopup(e.latlng.lat.toFixed(6).toString() + ', ' + e.latlng.lng.toFixed(6).toString()).openPopup();
             handlers.addWaypoint(e.latlng.lat,e.latlng.lng,5);
         }
-
       },
 }
 
