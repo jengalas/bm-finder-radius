@@ -29,7 +29,7 @@ var handlers = {
       handlers.addWaypoint(lat,lon,radius);
     },
     addWaypoint: function(lat,lon,radius) {
-        var proxyUrl = 'https://mysterious-stream-86355.herokuapp.com/',
+        var proxyUrl = 'https://cors-anywhere-jg.up.railway.app/',
         targetUrl = 'https://geodesy.noaa.gov/api/nde/radial?lat=' + lat + '&lon=' + lon + '&radius=' + radius;
         
         fetch(proxyUrl + targetUrl)
