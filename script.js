@@ -189,6 +189,10 @@ var view = {
 		
 		map.addLayer(markers);
 
+        L.control.polylineMeasure({
+            unit: 'landmiles'
+        }).addTo(map);
+
         L.control.mapCenterCoord({
             latlngFormat: 'DD',
             latlngDesignators: false,
