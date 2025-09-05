@@ -110,7 +110,7 @@ var view = {
     },
     displayMap: function(myGeoJSON,lat,lon,radius) { 
         this.refreshMap();
-        var map = L.map('map', { fullscreenControl: true, });
+        var map = L.map('map', { fullscreenControl: true, geocoderControl: true });
         
         var circ = L.circle([lat,lon], {fillColor: 'transparent', radius: radius*1609.344}).addTo(map); // If desired to show the radius graphically
 
