@@ -115,8 +115,7 @@ var view = {
     const leafletControl = L.control.geocoder({
       position: 'topright',   // leaflet L.Control option
       onSelect: leafletControl => {
-        const feature = leafletControl.getSelected().properties; // geojson point feature
-        console.log(feature.Latitude);
+        const feature = leafletControl.getSelected().properties;
         map.fitBounds(feature.Bounds, {
           maxZoom: 12
         });
@@ -212,7 +211,7 @@ var view = {
     }).addTo(map);
 
     map.on('contextmenu', addMarker);
-    
+
     // TODO: add form for "Radius?" and "Use this location?" in popup
 
     function addMarker(e) {
