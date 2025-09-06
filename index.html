@@ -34,16 +34,19 @@
 <body>
   <div class="container">
     <h1>BM finder by radius</h1>
-    <div id="statusDiv"></div>
-    <form id="bmRequestForm">
-      <input id="btnGetCurrentPosition" type='button' value="Use Current Location">
-      <input type="text" id="lat" placeholder="Latitude" value="">
-      <input type="text" id="lon" placeholder="Longitude" value="">
-      <input type="text" id="radius" placeholder="Radius (miles)" value="">
-      <input type="button" value="Submit" onclick="handlers.getInputValues()" />
-      <!-- <button type="submit" onclick="getInputValue()">Add waypoint</button> -->
-      <div id="alert" style="color: red"></div>
-    </form>
+    <details open>
+      <summary></summary>
+      <div id="statusDiv"></div>
+      <form id="bmRequestForm">
+        <input id="btnGetCurrentPosition" type='button' value="Use Current Location">
+        <input type="text" id="lat" placeholder="Latitude" value="">
+        <input type="text" id="lon" placeholder="Longitude" value="">
+        <input type="text" id="radius" placeholder="Radius (miles)" value="">
+        <input type="button" value="Submit" onclick="handlers.getInputValues()" />
+        <!-- <button type="submit" onclick="getInputValue()">Add waypoint</button> -->
+        <div id="alert" style="color: red"></div>
+      </form>
+    </details>
     <div id="map"></div>
   </div>
 
