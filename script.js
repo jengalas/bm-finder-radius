@@ -110,7 +110,19 @@ var view = {
   },
   displayMap: function (myGeoJSON, lat, lon, radius) {
     this.refreshMap();
-    var map = L.map('map', { fullscreenControl: true, geocoderControl: true });
+    var map = L.map('map', { fullscreenControl: true, });
+
+    const leafletControl = L.control.geocoder({
+      position: 'topright',   // leaflet L.Control option
+      onSelect: leafletControl => {
+        const feature = leafletControl.getSelected().properties; // geojson point feature
+        console.log(feature.Latitude);
+        map.fitBounds(feature.Bounds, {
+          maxZoom: 12
+        });
+        addMarker2(feature);
+      }
+    }).addTo(map);
 
     var circ = L.circle([lat, lon], { fillColor: 'transparent', radius: radius * 1609.344 }).addTo(map); // If desired to show the radius graphically
 
@@ -200,15 +212,19 @@ var view = {
     }).addTo(map);
 
     map.on('contextmenu', addMarker);
-
-
-
+    
     // TODO: add form for "Radius?" and "Use this location?" in popup
 
     function addMarker(e) {
       var newMarker = new L.marker(e.latlng).addTo(map);
       newMarker.bindPopup(e.latlng.lat.toFixed(6).toString() + ', ' + e.latlng.lng.toFixed(6).toString()).openPopup();
       handlers.addWaypoint(e.latlng.lat, e.latlng.lng, 5);
+    }
+
+    function addMarker2(e) {
+      var newMarker2 = new L.marker([e.Latitude,e.Longitude]).addTo(map);
+      newMarker2.bindPopup(e.Latitude.toFixed(6).toString() + ', ' + e.Longitude.toFixed(6).toString()).openPopup();
+      handlers.addWaypoint(e.Latitude, e.Longitude, 5);
     }
   }
 }
